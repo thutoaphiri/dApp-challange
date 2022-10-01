@@ -1,0 +1,19 @@
+.logo-outer-container {
+    display: flex;
+    align-items: center;
+
+    .logo-image {
+        width: 50px;
+        height: 52.81px;
+        margin-right: 10px;
+        border-radius: 2px;
+    }
+    .logo-name-container {
+        display: flex;
+        flex-direction: column;
+
+        .logo-name-text {
+            color: $white;
+        }
+    }
+}

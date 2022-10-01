@@ -1,0 +1,19 @@
+.button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13.8453px 55.3813px;
+    gap: 17.31px;
+    border-radius: 8px;
+    background-color: $primary-color;
+    line-height: 29px;
+    transition: opacity 200ms ease-in;
+    
+    &:hover {
+        opacity: .9;
+    }
+}
+.button-title {
+   color: $white;
+}

@@ -1,0 +1,41 @@
+.header-outer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
+    //isolation: isolate;
+    //min-height: 105px;
+    background-color: $primary-color;
+
+    .header-cta {
+        background-color: $accent-beta;
+    }
+    .header-cta-title {
+        color: $primary-color;
+    }
+    .header-nav-actions-container {
+        display: flex;
+    }
+}
+
+.hi-outer-container {
+    cursor: pointer;
+    transition: opacity 200ms ease-in;
+    margin-right: 50px;
+
+    .hi-on-select-border {
+        border-top: 1px solid $white;
+        transition: width 200ms ease-in;
+    }
+    .hi-title {
+        color: $white;
+        line-height: 30px;
+    }
+    &:last-child {
+        margin-right: 0px;
+    }
+    &:hover {
+        opacity: .9;
+    }
+}
