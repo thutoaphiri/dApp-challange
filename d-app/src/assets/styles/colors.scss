@@ -5,3 +5,7 @@ $accent-beta: rgba(243, 238, 226, 1);
 $white: rgba(253, 253, 253, 1);
 $ink-alpha: rgba(43, 48, 53, 1);
 $ink-beta: rgba(55, 71, 86, 1);
+
+* {
+    color: $ink-alpha;
+}

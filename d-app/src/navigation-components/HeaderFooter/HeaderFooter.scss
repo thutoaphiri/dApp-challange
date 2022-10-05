@@ -1,12 +1,12 @@
-.header-outer-container {
+.header-footer-outer-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 100px;
     //isolation: isolate;
     //min-height: 105px;
     background-color: $primary-color;
+    box-sizing: border-box;
 
     .header-cta {
         background-color: $accent-beta;
@@ -14,8 +14,35 @@
     .header-cta-title {
         color: $primary-color;
     }
+    .footer-cta {
+        background-color:$accent-alpha;
+    }
+    .footer-cta-title {
+        color: $white;
+    }
     .header-nav-actions-container {
         display: flex;
+    }
+    .foota-actions-container {
+        display: flex;
+        width: 70%;
+        justify-content: space-between;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}
+
+.header-outer-container {
+    height: $header-height;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.footer-outer-container {
+    height: $footer-height;
+
+    .legalities-text {
+        color: $white;
+        line-height: 24px;
     }
 }
 

@@ -31,10 +31,11 @@ const Header: React.FC<IComponentProps> = (props: IComponentProps) => {
         }
     }
     return (
-        <div className="header-outer-container">
+        <div className="header-footer-outer-container header-outer-container">
             <Logo
                 render="LOGO_AND_NAME"
                 canNavToHome={true}
+                setHeaderNavCurrentRoute={props.setHeaderNavCurrentRoute}
             />
             <div className="header-nav-actions-container">
                 <HeaderItem
@@ -54,7 +55,7 @@ const Header: React.FC<IComponentProps> = (props: IComponentProps) => {
                 />
             </div>
             <Button
-                title = "Button"
+                title = "Connect Wallet"
                 onPress = {() => {}}
                 additionalButtonStyle="header-cta"
                 additionalButtonTitleStyle="header-cta-title"
