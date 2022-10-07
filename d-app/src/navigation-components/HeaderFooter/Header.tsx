@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import HeaderItem from "./components/HeaderItem";
 import Logo from "../../components/Logo/Logo";
 import { EHeaderNavigatorRoutesTitles, EHeaderNavigatorRoutes } from "../models";
+import { useSelector, useDispatch } from "react-redux";
+import { IWallet } from "../../redux-store/reducers/wallet";
+import { EWalletActions } from "../../redux-store/actions/wallet";
+import { HashLoader } from "react-spinners";
 
 interface IComponentProps {
     currrentRoute: EHeaderNavigatorRoutesTitles;
@@ -12,6 +16,24 @@ interface IComponentProps {
 
 const Header: React.FC<IComponentProps> = (props: IComponentProps) => {
     const navigate = useNavigate();
+
+    const isWalletConected = useSelector<
+        IWallet,
+        IWallet["isWalletConnected"]
+    >(state => state.isWalletConnected);
+    const dispatch = useDispatch();
+
+    const [connectingWallet, setconnectingWallet] = useState<boolean>(false)
+
+    const onConnectWallet = () => {
+        setconnectingWallet(true);
+        let apiCallSimulator = setTimeout(() => {
+            dispatch({type: EWalletActions.CONNECT_WALLET});
+            setconnectingWallet(false);
+            clearTimeout(apiCallSimulator);
+
+        }, 1500);
+    }
 
     const onNavigate = (chosenRoute: EHeaderNavigatorRoutesTitles) => {
         props.setHeaderNavCurrentRoute(chosenRoute);
@@ -55,8 +77,10 @@ const Header: React.FC<IComponentProps> = (props: IComponentProps) => {
                 />
             </div>
             <Button
-                title = "Connect Wallet"
-                onPress = {() => {}}
+                title = {isWalletConected ? "Wallet Connected" : "Connect Wallet"}
+                onPress = {onConnectWallet}
+                isLoading={connectingWallet}
+                disabled={isWalletConected}
                 additionalButtonStyle="header-cta"
                 additionalButtonTitleStyle="header-cta-title"
             />

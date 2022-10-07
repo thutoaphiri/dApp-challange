@@ -3,6 +3,8 @@ import { IScholarshipPool } from "../models";
 import StatsTile from "./StatsTile";
 import ProgressBar from "./ProgressBar";
 import Button from "../../../components/Button/Button";
+import { useSelector } from "react-redux";
+import { IWallet } from "../../../redux-store/reducers/wallet";
 
 interface IComponentProps {
     scholarshipDetails: IScholarshipPool
@@ -11,6 +13,17 @@ interface IComponentProps {
 
 const AvailableScholarshipCard: React.FC<IComponentProps> = ({ scholarshipDetails, makeDonation }: IComponentProps) => {
     const { schoolDetails, donationDetails} = scholarshipDetails;
+
+    const isWalletConected = useSelector<
+        IWallet,
+        IWallet["isWalletConnected"]
+    >(state => state.isWalletConnected);
+    
+    const makeDonationHandler = () => {
+        if (isWalletConected) {
+            makeDonation();
+        }
+    }
     return (
         <div className="ssc-outer-container">
             <img
@@ -49,7 +62,7 @@ const AvailableScholarshipCard: React.FC<IComponentProps> = ({ scholarshipDetail
                 </div>
                 <Button
                     title="Donate Now"
-                    onPress={makeDonation}
+                    onPress={makeDonationHandler}
                 />
             </div>
         </div>

@@ -1,0 +1,20 @@
+.input {
+    width: 100%;
+    padding: 3% 5%;
+    margin-top: 4%;
+    margin-bottom: 6%;
+    border-radius: 10px;
+    background-color: #E6E6E6;
+    border: 0px;
+    transition: background-color 200ms ease-in;
+    box-sizing: border-box;
+
+    &:active {
+        border: 0px;
+    }
+    &:focus {
+        border: 0px;
+        outline: none;
+        background-color: $white;
+    }
+}

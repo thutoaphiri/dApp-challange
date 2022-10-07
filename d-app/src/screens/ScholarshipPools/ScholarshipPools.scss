@@ -1,3 +1,5 @@
+@import "./components/DonationForm/DonationForm.scss";
+
 .screens-container {
     position: relative;
     display: flex;
@@ -11,6 +13,20 @@
     position: absolute;
     transition: left 300ms ease-in, right 300ms ease-in;
     box-sizing: border-box;
+
+    .back-button {
+        //font-size: ;
+        cursor: pointer;
+        position: absolute;
+        left: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: opacity 200ms ease-in;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
 }
 .dp-outer-container {
     box-sizing: border-box;
@@ -20,8 +36,9 @@
     //justify-content: center;
     overflow: scroll;
 }
-.md-outer-screen {
-
+.md-outer-container {
+    display: flex;
+    align-items: center;
 }
 .ssc-outer-container {
     min-width: 28%;

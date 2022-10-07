@@ -1,5 +1,9 @@
 import { IScholarshipPool } from "../models";
 
+
+export const USD_TO_ADA = 2.32 //US dollar to ada as of 6 October 2022;
+export const FEES_PERCENTATGE_SAMPLE_DATA = .1;
+
 export const scholarshipPools_SAMPLE_DATA: Array<IScholarshipPool> =[
     {
         schoolDetails: {
