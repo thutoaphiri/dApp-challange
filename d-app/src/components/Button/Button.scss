@@ -1,24 +1,26 @@
 .button {
     position: relative;
-    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 13.8453px 55.3813px;
     border-radius: 8px;
     background-color: $primary-color;
-    transition: opacity 200ms ease-in, transform 200ms ease-in;
-    
-    &:hover {
-        opacity: .9;
-    }
-    &:active {
-        transform: scale(.95);
-    }
 }
 .button-title {
    color: $white;
 }
 .button-loader {
     position: absolute;
+}
+
+.button-hover-click-effect {
+    cursor: pointer;
+    transition: opacity 200ms ease-in, transform 200ms ease-in;
+    &:hover {
+        opacity: .9;
+    }
+    &:active {
+        transform: scale(.95);
+    }
 }

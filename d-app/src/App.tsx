@@ -6,6 +6,7 @@ import ScholarsProgress from './screens/ScholarsProgress/ScholarsProgress';
 import Header from './navigation-components/HeaderFooter/Header';
 import { EHeaderNavigatorRoutesTitles, EHeaderNavigatorRoutes } from './navigation-components/models';
 import Footer from './navigation-components/HeaderFooter/Footer';
+import PopUp from './components/PopUp/PopUp';
 
 function App() {
   const [headerNavCurrentRoute, setHeaderNavCurrentRoute] = useState<EHeaderNavigatorRoutesTitles>(
@@ -13,6 +14,7 @@ function App() {
   );
   return (
     <Router>
+      <PopUp />
       <Header
         currrentRoute={headerNavCurrentRoute}
         setHeaderNavCurrentRoute={setHeaderNavCurrentRoute}

@@ -1,7 +1,7 @@
 import React from "react";
 import { HashLoader } from "react-spinners";
 
-interface IComponentProps {
+export interface IButtonProps {
     title: string
     onPress: () => void
     isLoading?: boolean
@@ -10,7 +10,7 @@ interface IComponentProps {
     additionalButtonTitleStyle?: string //classname referenced in scss file
 }
 
-const Button: React.FC<IComponentProps> = (props: IComponentProps) => {
+const Button: React.FC<IButtonProps> = (props: IButtonProps) => {
 
     const onPressHandler = () => {
         if(!props.isLoading && !props.disabled) {
@@ -19,7 +19,7 @@ const Button: React.FC<IComponentProps> = (props: IComponentProps) => {
     }
     return (
         <div
-            className={`button ${props.additionalButtonStyle ?? ""}`}
+            className={`button button-hover-click-effect ${props.additionalButtonStyle ?? ""}`}
             onClick={onPressHandler}
         >
             <div
