@@ -3,8 +3,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    //isolation: isolate;
-    //min-height: 105px;
     background-color: $primary-color;
     box-sizing: border-box;
 
@@ -23,9 +21,10 @@
     .header-nav-actions-container {
         display: flex;
     }
-    .foota-actions-container {
+    .footer-actions-container {
+        box-sizing: border-box;
         display: flex;
-        width: 70%;
+        width: 80%;
         justify-content: space-between;
         padding-left: 15%;
         padding-right: 15%;
@@ -39,8 +38,13 @@
 }
 .footer-outer-container {
     height: $footer-height;
-
+    padding-right: .5%;
+    .legalities-outer-container {
+        display: flex;
+        flex-direction: column;
+    }
     .legalities-text {
+        display: block;
         color: $white;
         line-height: 24px;
     }

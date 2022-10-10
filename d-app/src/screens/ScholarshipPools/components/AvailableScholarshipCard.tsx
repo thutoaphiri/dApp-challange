@@ -3,8 +3,12 @@ import { IScholarshipPool } from "../models";
 import StatsTile from "./StatsTile";
 import ProgressBar from "./ProgressBar";
 import Button from "../../../components/Button/Button";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { IWallet } from "../../../redux-store/reducers/wallet";
+import { RootState } from "../../../redux-store/reducers";
+import { IPopUp } from "../../../redux-store/reducers/popups";
+import { EPopUpsActions } from "../../../redux-store/actions/popups";
+import { EWalletActions } from "../../../redux-store/actions/wallet";
 
 interface IComponentProps {
     scholarshipDetails: IScholarshipPool
@@ -12,23 +16,46 @@ interface IComponentProps {
 }
 
 const AvailableScholarshipCard: React.FC<IComponentProps> = ({ scholarshipDetails, makeDonation }: IComponentProps) => {
+    const dispatch = useDispatch()
     const { schoolDetails, donationDetails} = scholarshipDetails;
 
     const isWalletConected = useSelector<
-        IWallet,
+        RootState,
         IWallet["isWalletConnected"]
-    >(state => state.isWalletConnected);
+    >(state => state.wallet.isWalletConnected);
+
+    const onConnectWallet = () => {
+        dispatch({type: EWalletActions.CONNECT_WALLET});
+        dispatch({type: EPopUpsActions.HIDE_POP_UP});
+    }
     
     const makeDonationHandler = () => {
         if (isWalletConected) {
             makeDonation();
+        } else {
+            dispatch({
+                type: EPopUpsActions.SHOW_POP_UP,
+                payload: {
+                    alertProps: {
+                        alertHeading: "Wallet Not Connected",
+                        alertBody: "Before you can donate to your chosen school, start by connecting your wallet.",
+                        buttonsProps: [
+                            {
+                                title: "Connect My Wallet",
+                                onPress: onConnectWallet
+                            }
+                        ]
+                    }
+                }
+            })
         }
     }
+
     return (
         <div className="ssc-outer-container">
             <img
                 className="school-image"
-                alt={`Image of ${schoolDetails?.schoolName}`}
+                alt={schoolDetails?.schoolName}
                 src={schoolDetails?.schoolImage}
             />
             <div className="body-container">

@@ -7,7 +7,8 @@ import { EHeaderNavigatorRoutesTitles, EHeaderNavigatorRoutes } from "../models"
 import { useSelector, useDispatch } from "react-redux";
 import { IWallet } from "../../redux-store/reducers/wallet";
 import { EWalletActions } from "../../redux-store/actions/wallet";
-import { HashLoader } from "react-spinners";
+import { RootState } from "../../redux-store/reducers";
+import { EPopUpsActions } from "../../redux-store/actions/popups";
 
 interface IComponentProps {
     currrentRoute: EHeaderNavigatorRoutesTitles;
@@ -16,12 +17,11 @@ interface IComponentProps {
 
 const Header: React.FC<IComponentProps> = (props: IComponentProps) => {
     const navigate = useNavigate();
-
-    const isWalletConected = useSelector<
-        IWallet,
-        IWallet["isWalletConnected"]
-    >(state => state.isWalletConnected);
     const dispatch = useDispatch();
+    const isWalletConected = useSelector<
+        RootState,
+        IWallet["isWalletConnected"]
+    >(state => state.wallet.isWalletConnected);
 
     const [connectingWallet, setconnectingWallet] = useState<boolean>(false)
 
@@ -31,6 +31,21 @@ const Header: React.FC<IComponentProps> = (props: IComponentProps) => {
             dispatch({type: EWalletActions.CONNECT_WALLET});
             setconnectingWallet(false);
             clearTimeout(apiCallSimulator);
+            dispatch({
+                type: EPopUpsActions.SHOW_POP_UP,
+                payload: {
+                    alertProps: {
+                        alertHeading: "Wallet Connected",
+                        alertBody: "You have successfully connected your wallet!",
+                        buttonsProps: [
+                            {
+                                title: "Continue",
+                                onPress: () => dispatch({type: EPopUpsActions.HIDE_POP_UP})
+                            }
+                        ]
+                    }
+                }
+            });
 
         }, 1500);
     }

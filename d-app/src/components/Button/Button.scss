@@ -6,9 +6,11 @@
     padding: 13.8453px 55.3813px;
     border-radius: 8px;
     background-color: $primary-color;
+    text-decoration: none;
 }
 .button-title {
    color: $white;
+   text-align: center;
 }
 .button-loader {
     position: absolute;

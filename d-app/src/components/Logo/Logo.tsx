@@ -18,12 +18,12 @@ const Logo: React.FC<IComponentProps> = (props: IComponentProps) => {
         }
     }
     return (
-        <div
-            className="logo-outer-container"
+        <a
+            className="logo-outer-container button-hover-click-effect"
             style={{
                 cursor: props.canNavToHome ? "pointer" : "default"
             }}
-            onClick={() => props.canNavToHome ? navToHome() : null}
+            href="https://directed.dev"
         >
             <img
                 className="logo-image"
@@ -37,7 +37,7 @@ const Logo: React.FC<IComponentProps> = (props: IComponentProps) => {
                     <text className="logo-name-text p regular-font">Realising Potential</text>
                 </div>
             }
-        </div>
+        </a>
     );
 }
 

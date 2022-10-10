@@ -1,8 +1,6 @@
 import React from "react";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import HeaderItem from "./components/HeaderItem";
-import Logo from "../../components/Logo/Logo";
 import { EHeaderNavigatorRoutesTitles, EHeaderNavigatorRoutes } from "../models";
 
 interface IComponentProps {
@@ -32,23 +30,26 @@ const Footer: React.FC<IComponentProps> = (props: IComponentProps) => {
     }
     return (
         <div className="header-footer-outer-container footer-outer-container">
-            <div className="foota-actions-container">
-                <Button
-                    title = "NEED HELP?"
-                    onPress = {() => {}}
-                    additionalButtonStyle="footer-cta"
-                    additionalButtonTitleStyle="footer-cta-title h5"
-                />
-                <Button
-                    title = "HAVE A SUGGESTION?"
-                    onPress = {() => {}}
-                    additionalButtonStyle="footer-cta"
-                    additionalButtonTitleStyle="footer-cta-title h5"
-                />
+            <div className="footer-actions-container">
+                <a
+                    href="https://directed.dev"
+                    className="button button-hover-click-effect footer-cta"
+                >
+                    <text className="button-title footer-cta-title h5 bold-font">NEED HELP?</text>
+                </a>
+                <a
+                    href="https://directed.dev"
+                    className="button button-hover-click-effect footer-cta"
+                >
+                    <text className="button-title footer-cta-title h5 bold-font">HAVE A SUGGESTION?</text>
+                </a>
             </div>
-            <div className="legalities-outer-container">
-                <text className="legalities-text p">Terms and Conditions | Privacy Policy</text>
-                <text className="legalities-text p">2022 DirectEd. All rights reserved.</text>
+            <div
+                className="legalities-outer-container"
+                onClick={() => localStorage.clear()}
+            >
+                <text className="legalities-text">Terms and Conditions | Privacy Policy</text>
+                <text className="legalities-text">2022 DirectEd. All rights reserved.</text>
             </div>
         </div>
     );
